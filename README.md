@@ -1,40 +1,48 @@
-GO API AUTH WITH FIBER
+Fiber PostgreSQL Authentication & CRUD API
 ===
-Abstract:xxx
-## Papar Information
-- Title:  `paper name`
-- Authors:  `A`,`B`,`C`
-- Preprint: [https://arxiv.org/abs/xx]()
-- Full-preprint: [paper position]()
-- Video: [video position]()
+## 📌 Deskripsi Proyek
+Proyek ini adalah RESTful API berbasis **Golang dengan Fiber** sebagai framework web yang ringan dan cepat. API ini terhubung dengan **PostgreSQL** sebagai database utama dan menerapkan **JWT Authentication** untuk keamanan. API ini dibuat untuk kebutuhan aplikasi yang memerlukan fitur **registrasi, login, dan manajemen pengguna (CRUD)** dengan standar keamanan yang baik.
+
+## 📌 Fitur Utama
+✅ **Autentikasi dengan JWT** → Login & register dengan hashing password menggunakan **bcrypt**.  
+✅ **Proteksi Endpoint** → Middleware JWT untuk membatasi akses hanya kepada pengguna yang telah login.  
+✅ **CRUD User** → Mendukung **Create, Read, Update, Delete** untuk data pengguna.  
+✅ **Struktur Proyek yang Terorganisir** → Menggunakan **Object-Oriented Programming (OOP)** dan pemisahan concern.  
+
+## 📌 Teknologi yang Digunakan
+- **Golang** → Bahasa pemrograman utama.
+- **Fiber** → Framework web yang ringan dan cepat.
+- **PostgreSQL** → Database relational untuk menyimpan data user.
+- **JWT (JSON Web Token)** → Untuk autentikasi dan otorisasi pengguna.
+- **bcrypt** → Untuk hashing password agar lebih aman.
 
 ## Install & Dependence
-- python
-- pytorch
-- numpy
 
-## Dataset Preparation
-| Dataset | Download |
-| ---     | ---   |
-| dataset-A | [download]() |
-| dataset-B | [download]() |
-| dataset-C | [download]() |
+- go mod init myapp
+- go get github.com/gofiber/fiber/v2
+- go get github.com/gofiber/jwt/v3
+- go get github.com/gofiber/basicauth
+- go get github.com/jmoiron/sqlx
+- go get github.com/lib/pq
+- go get golang.org/x/crypto/bcrypt
+- go get github.com/golang-jwt/jwt/v5
 
 ## Use
-- for train
-  ```
-  python train.py
-  ```
 - for test
   ```
-  python test.py
+  go run main.go
   ```
-## Pretrained model
-| Model | Download |
-| ---     | ---   |
-| Model-1 | [download]() |
-| Model-2 | [download]() |
-| Model-3 | [download]() |
+## 📌 Endpoint API
+
+## API Endpoints
+
+| Method | Endpoint       | Deskripsi              | Authentication |
+|--------|--------------|----------------------|---------------|
+| **POST**   | `/auth/register` | Register User        | ❌ Tidak perlu |
+| **POST**   | `/auth/login`    | Login & Dapatkan Token | ❌ Tidak perlu |
+| **GET**    | `/users`         | Get List User        | ✅ Perlu Token |
+| **PUT**    | `/users/:id`     | Update User         | ✅ Perlu Token |
+| **DELETE** | `/users/:id`     | Hapus User         | ✅ Perlu Token |
 
 
 ## Directory Hierarchy
@@ -55,22 +63,14 @@ Abstract:xxx
 |    |—— auth.go
 |    |—— user.go
 ```
-## Code Details
-### Tested Platform
-- software
-  ```
-  OS: Debian unstable (May 2021), Ubuntu LTS
-  Python: 3.8.5 (anaconda)
-  PyTorch: 1.7.1, 1.8.1
-  ```
-- hardware
-  ```
-  CPU: Intel Xeon 6226R
-  GPU: Nvidia RTX3090 (24GB)
-  ```
-### Hyper parameters
-```
-```
+
+## 📌 Keamanan API
+✔ Menggunakan bcrypt untuk hashing password, sehingga data tidak tersimpan dalam bentuk teks biasa.
+✔ Token JWT memiliki expiration time untuk membatasi waktu sesi pengguna.
+✔ Endpoint CRUD dilindungi oleh middleware JWT, sehingga hanya pengguna yang memiliki token valid yang bisa mengaksesnya.
+
+
+
 ## References
 - [paper-1]()
 - [paper-2]()
